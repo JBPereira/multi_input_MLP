@@ -445,11 +445,12 @@ class CIDGmm(CID, Normal):
 <<<<<<< HEAD
         data_cov = np.cov(self.data.T)
 
-        # plt.hist(data_cov, bins=10)
-        # plt.show()
+        plt.hist(data_cov, bins=10)
+        plt.show()
 
         mean_cov = np.mean(data_cov)
 
+<<<<<<< HEAD
         # if mean_cov < 0.5:
         #
         #     prec_estimator = GraphicalLassoCV(**kwargs)
@@ -466,6 +467,19 @@ class CIDGmm(CID, Normal):
 =======
         graph_lasso.fit(self.data)
 >>>>>>> parent of 2638d92... Changed Net Inference in CID and some minor changes in CID test
+=======
+        if mean_cov < 0.5:
+
+            prec_estimator = GraphicalLassoCV(**kwargs)
+
+        elif mean_cov<0.2:
+
+            prec_estimator = LedoitWolf()
+
+        else:
+
+            prec_estimator = MinCovDet()
+>>>>>>> parent of 4986d15... Update CID
 
         estimated_mean = graph_lasso.location_
         estimated_precision = graph_lasso.precision_
