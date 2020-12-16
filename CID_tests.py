@@ -120,7 +120,6 @@ def plot_mi_imps_breast_cancer(X, y, data_str, n_splits=20, perm_imps=None, clf_
 # Real data test
 ##############################################################################
 
-
 n_splits = 20
 
 plot_imps = True
