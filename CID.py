@@ -443,6 +443,7 @@ class CIDGmm(CID, Normal):
         graph_lasso = GraphicalLassoCV(**kwargs)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         data_cov = np.cov(self.data.T)
 
         plt.hist(data_cov, bins=10)
@@ -486,6 +487,9 @@ class CIDGmm(CID, Normal):
 >>>>>>> parent of 4986d15... Update CID
 =======
 >>>>>>> parent of 4986d15... Update CID
+=======
+        graph_lasso.fit(self.data)
+>>>>>>> parent of 2638d92... Changed Net Inference in CID and some minor changes in CID test
 
         estimated_mean = graph_lasso.location_
         estimated_precision = graph_lasso.precision_
