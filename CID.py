@@ -467,22 +467,24 @@ class CIDGmm(CID, Normal):
 
         data_cov = np.cov(self.data.T)
 
-        plt.hist(data_cov, bins=10)
-        plt.show()
+        # plt.hist(data_cov, bins=10)
+        # plt.show()
 
         mean_cov = np.mean(data_cov)
 
-        if mean_cov < 0.5:
+        # if mean_cov < 0.5:
+        #
+        #     prec_estimator = GraphicalLassoCV(**kwargs)
+        #
+        # elif mean_cov<0.2:
+        #
+        #     prec_estimator = LedoitWolf()
+        #
+        # else:
+        #
+        #     prec_estimator = MinCovDet()
 
-            prec_estimator = GraphicalLassoCV(**kwargs)
-
-        elif mean_cov<0.2:
-
-            prec_estimator = LedoitWolf()
-
-        else:
-
-            prec_estimator = MinCovDet()
+        prec_estimator = GraphicalLassoCV(**kwargs)
 
         prec_estimator.fit(self.data)
         estimated_mean = prec_estimator.location_
