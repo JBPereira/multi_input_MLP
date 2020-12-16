@@ -43,8 +43,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="123">
               <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="488" selection-end-column="8" />
+=======
+            <state relative-caret-position="72">
+              <caret line="467" column="35" lean-forward="true" selection-start-line="467" selection-end-line="468" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
 =======
             <state relative-caret-position="72">
               <caret line="467" column="35" lean-forward="true" selection-start-line="467" selection-end-line="468" />
@@ -212,7 +217,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1607589052062" duration="18110000" />
+=======
+      <workItem from="1607589052062" duration="17217000" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
 =======
       <workItem from="1607589052062" duration="17217000" />
 >>>>>>> parent of 4428c2a... Update workspace.xml
@@ -229,7 +238,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="59196000" />
+=======
+    <option name="totallyTimeSpent" value="58303000" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
 =======
     <option name="totallyTimeSpent" value="58303000" />
 >>>>>>> parent of 4428c2a... Update workspace.xml
@@ -279,7 +292,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <line>474</line>
+=======
+          <line>492</line>
+>>>>>>> parent of 4428c2a... Update workspace.xml
 =======
           <line>492</line>
 >>>>>>> parent of 4428c2a... Update workspace.xml
@@ -515,8 +532,13 @@ cond = np.linalg.cond(estimated_cov)</expression-string>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="123">
           <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="488" selection-end-column="8" />
+=======
+        <state relative-caret-position="72">
+          <caret line="467" column="35" lean-forward="true" selection-start-line="467" selection-end-line="468" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
 =======
         <state relative-caret-position="72">
           <caret line="467" column="35" lean-forward="true" selection-start-line="467" selection-end-line="468" />
