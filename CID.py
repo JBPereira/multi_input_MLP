@@ -3,7 +3,7 @@ from functools import reduce
 
 import numpy as np
 import pandas as pd
-from sklearn.covariance import GraphicalLassoCV, LedoitWolf, MinCovDet
+from sklearn.covariance import GraphicalLassoCV
 from sklearn.preprocessing import scale, minmax_scale
 from sklearn.metrics import mutual_info_score
 from sklearn.preprocessing import QuantileTransformer
@@ -12,7 +12,7 @@ from sklearn.preprocessing import QuantileTransformer
 class CID:
 
     def __init__(self, data, graph=None, n_bins='sqrt', scale_data=True, discretize=False, kwargs=None,
-                 disc_feats=None, cont_feats=None, data_std_threshold=None):
+                 data_std_threshold=None):
 
         """
         Base class for Covered Information Disentanglement.
@@ -23,17 +23,12 @@ class CID:
         :param discretize: whether or not to discretize. The CID nice intuitive
         properties only work for discrete data, so we recommend always
         discretizing your data
-        :param disc_feats: Can pass here the indexes of the discrete feats. pass also to cont_feats
-        :param cont_feats: Pass here the indexes of continuous feats. otherwise CID will try to infer
         :param kwargs: Pass here the arguments for the network structure learning
         :param data_std_threshold: if None, all data is used to compute CID,
         else, all data xi>data_std_threshold * std will be excluded. This can
         help getting better network inference because discretization will not
         be affected by outliers
         """
-
-        self.cont_feats = cont_feats
-        self.disc_feats = disc_feats
 
         df = pd.DataFrame(data)
 
@@ -46,18 +41,7 @@ class CID:
 
         self.n_bins = self.convert_bins(n_bins)
 
-        if self.cont_feats is None and self.disc_feats is None:
-
-            self.cont_feats, self.disc_feats = self.identify_continuous_features()
-
-        elif self.cont_feats is None:
-            self.cont_feats = np.argwhere(np.in1d(np.arange(self.data.shape[1]),
-                                                  self.disc_feats,
-                                                  invert=True)).flatten()
-        elif self.disc_feats is None:
-            self.disc_feats = np.argwhere(np.in1d(np.arange(self.data.shape[1]),
-                                                  self.cont_feats,
-                                                  invert=True)).flatten()
+        self.cont_feats, self.disc_feats = self.identify_continuous_features()
 
         if data_std_threshold is not None:
             self.remove_extreme_values(data_std_threshold)
@@ -66,7 +50,7 @@ class CID:
             self.deltas = None
 
             self.discretize_data(self.n_bins)
-            if scale_data and len(self.cont_feats)>0:
+            if scale_data:
                 self.data.iloc[:, self.cont_feats] = scale(
                     self.data.iloc[:, self.cont_feats].values, with_std=True)
             #
@@ -184,14 +168,12 @@ class CID:
         # self.deltas = np.array(
         #     [self.values_table[i][1] - self.values_table[i][0] for i in range(self.data.shape[1])])
 
-        if len(self.cont_feats)>0:
-
-            self.data.iloc[:, self.cont_feats] = self.data.iloc[:, self.cont_feats].apply(
-                lambda col: pd.cut(col, bins=n_bins,
-                                   labels=np.linspace(
-                                       np.min(col) - np.abs(np.min(col)) * bound_slack,
-                                       np.max(col) + np.abs(np.max(col)) * bound_slack,
-                                       n_bins * 2)[1::2]))
+        self.data.iloc[:, self.cont_feats] = self.data.iloc[:, self.cont_feats].apply(
+            lambda col: pd.cut(col, bins=n_bins,
+                               labels=np.linspace(
+                                   np.min(col) - np.abs(np.min(col)) * bound_slack,
+                                   np.max(col) + np.abs(np.max(col)) * bound_slack,
+                                   n_bins * 2)[1::2]))
 
     def get_neighbors(self, ind):
 
@@ -202,8 +184,7 @@ class CID:
     def remove_extreme_values(self, std_threshold=2):
 
         stds = np.std(self.data.values, axis=0)
-        means = np.mean(self.data.values, axis=0)
-        rows_to_remove = np.hstack([np.argwhere(np.abs(self.data.values[:, i]-means[i]) >
+        rows_to_remove = np.hstack([np.argwhere(np.abs(self.data.values[:, i]) >
                                                 std_threshold * stds[i]).flatten()
                                     for i in range(self.data.shape[1])])
         rows_to_remove = np.unique(rows_to_remove)
@@ -333,7 +314,6 @@ class Normal:
 class CIDGmm(CID, Normal):
 
     def __init__(self, data, y=None, n_bins='sqrt', scale_data=False, discretize=False, redund_correction=False,
-                 disc_feats=None, cont_feats=None,
                  threshold_precision=0.08, random_state=0, data_std_threshold=None, empirical_mi=False, kwargs=None):
 
         """
@@ -344,8 +324,6 @@ class CIDGmm(CID, Normal):
         :param threshold_precision: value below which to consider entries in the
         estimated precision as 0. Precision entries that are 0 encode independence
         between the features.
-        :param disc_feats: Can pass here the indexes of the discrete feats. pass also to cont_feats
-        :param cont_feats: Pass here the indexes of continuous feats. otherwise CID will try to infer
         :param redund_correction: whether to apply redundant information correction in the mutual info (see
         R. Ince: The Partial Entropy Decomposition: Decomposing multivariate entropy and mutual
         information via pointwise common surprisal 2017 arxiv:1702.01591)
@@ -373,12 +351,10 @@ class CIDGmm(CID, Normal):
             if isinstance(data, pd.DataFrame):
                 data_['y'] = y
             else:
-                if len(y.shape)==1:
-                    y=y[:, np.newaxis]
                 data_ = np.hstack([data_, y])
 
         CID.__init__(self, data=data_, n_bins=n_bins, scale_data=scale_data,
-                     discretize=discretize, disc_feats=disc_feats, cont_feats=cont_feats,
+                     discretize=discretize,
                      data_std_threshold=data_std_threshold, kwargs=kwargs)
 
         self.y_pot_tensor = self.compute_joint_y_pot_tensor()
@@ -464,7 +440,9 @@ class CIDGmm(CID, Normal):
         :return:
         """
         n_proc = multiprocessing.cpu_count()
+        graph_lasso = GraphicalLassoCV(**kwargs)
 
+<<<<<<< HEAD
         data_cov = np.cov(self.data.T)
 
         # plt.hist(data_cov, bins=10)
@@ -485,10 +463,12 @@ class CIDGmm(CID, Normal):
         #     prec_estimator = MinCovDet()
 
         prec_estimator = GraphicalLassoCV(**kwargs)
+=======
+        graph_lasso.fit(self.data)
+>>>>>>> parent of 2638d92... Changed Net Inference in CID and some minor changes in CID test
 
-        prec_estimator.fit(self.data)
-        estimated_mean = prec_estimator.location_
-        estimated_precision = prec_estimator.precision_
+        estimated_mean = graph_lasso.location_
+        estimated_precision = graph_lasso.precision_
         data_prec = np.linalg.pinv(np.cov(self.data.T))
         self.mean = estimated_mean
         self.precision = estimated_precision
