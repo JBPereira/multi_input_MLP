@@ -451,6 +451,7 @@ class CIDGmm(CID, Normal):
         mean_cov = np.mean(data_cov)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         # if mean_cov < 0.5:
         #
         #     prec_estimator = GraphicalLassoCV(**kwargs)
@@ -468,6 +469,8 @@ class CIDGmm(CID, Normal):
         graph_lasso.fit(self.data)
 >>>>>>> parent of 2638d92... Changed Net Inference in CID and some minor changes in CID test
 =======
+=======
+>>>>>>> parent of 4986d15... Update CID
         if mean_cov < 0.5:
 
             prec_estimator = GraphicalLassoCV(**kwargs)
@@ -479,6 +482,9 @@ class CIDGmm(CID, Normal):
         else:
 
             prec_estimator = MinCovDet()
+<<<<<<< HEAD
+>>>>>>> parent of 4986d15... Update CID
+=======
 >>>>>>> parent of 4986d15... Update CID
 
         estimated_mean = graph_lasso.location_
