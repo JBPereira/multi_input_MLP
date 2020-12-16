@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d343fa1-0dc6-474f-a1a0-ee3b89731e14" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cid_test_intermediate_layers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CID.py" beforeDir="false" afterPath="$PROJECT_DIR$/CID.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CID_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/CID_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_MLP.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/run_MLP.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_MLP_Crohns.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/run_MLP_Crohns.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +40,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CID.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="123">
               <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="488" selection-end-column="8" />
+=======
+            <state relative-caret-position="72">
+              <caret line="467" column="35" lean-forward="true" selection-start-line="467" selection-end-line="468" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -109,12 +118,46 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="ProjectPane" />
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="multi_input_MLP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="multi_input_MLP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi_input_MLP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="multi_input_MLP" type="462c0819:PsiDirectoryNode" />
+              <item name="input_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi_input_MLP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="multi_input_MLP" type="462c0819:PsiDirectoryNode" />
+              <item name="input_data" type="462c0819:PsiDirectoryNode" />
+              <item name="intermediate_layer_outputs_cid_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi_input_MLP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="multi_input_MLP" type="462c0819:PsiDirectoryNode" />
+              <item name="large_data_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi_input_MLP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="multi_input_MLP" type="462c0819:PsiDirectoryNode" />
+              <item name="output_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> parent of 4428c2a... Update workspace.xml
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -156,17 +199,25 @@
       <workItem from="1605353265862" duration="5444000" />
       <workItem from="1607522669633" duration="1966000" />
       <workItem from="1607528894403" duration="1317000" />
+<<<<<<< HEAD
       <workItem from="1607589052062" duration="18110000" />
+=======
+      <workItem from="1607589052062" duration="17217000" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="59196000" />
+=======
+    <option name="totallyTimeSpent" value="58303000" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22252011" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18364611" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -179,7 +230,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32956153" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32956153" />
       <window_info anchor="bottom" id="Run" order="12" weight="0.32956153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -199,7 +250,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/CID.py</url>
+<<<<<<< HEAD
           <line>474</line>
+=======
+          <line>492</line>
+>>>>>>> parent of 4428c2a... Update workspace.xml
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -423,8 +478,13 @@ cond = np.linalg.cond(estimated_cov)</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/CID.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="123">
           <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="488" selection-end-column="8" />
+=======
+        <state relative-caret-position="72">
+          <caret line="467" column="35" lean-forward="true" selection-start-line="467" selection-end-line="468" />
+>>>>>>> parent of 4428c2a... Update workspace.xml
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
